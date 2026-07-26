@@ -24,4 +24,4 @@ RUN mkdir -p /srv/agent-redteam/outside-8afd8379 \
 EXPOSE 8080
 
 # Render injects $PORT at runtime; default to 8080 for local/manual runs.
-CMD ["sh", "-c", "gunicorn -w 2 -b 0.0.0.0:${PORT:-8080} app:app"]
+CMD ["sh", "-c", "gunicorn -w 4 --threads 4 --timeout 30 -b 0.0.0.0:${PORT:-8080} app:app"]
